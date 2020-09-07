@@ -8,19 +8,16 @@ function flipCard() {
   if (lockBoard) return;
   if (this === firstCard) return;
 
-  this.classList.toggle('flip');
+  this.classList.add('flip');
 
   if (!hasFlippedCard) {
-    // first click
     hasFlippedCard = true;
     firstCard = this;
 
     return;
   }
 
-  // second click
   secondCard = this;
-
   checkForMatch();
 }
 
@@ -33,6 +30,8 @@ function checkForMatch() {
 function disableCards() {
   firstCard.removeEventListener('click', flipCard);
   secondCard.removeEventListener('click', flipCard);
+
+  resetBoard();
 }
 
 function unflipCards() {
